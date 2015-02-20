@@ -43,3 +43,8 @@ group :development, :test do
   gem 'spring'
 end
 
+gem 'foundation-rails'
+group :development do
+  gem 'rails_layout'
+end
+
