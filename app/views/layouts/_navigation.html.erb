@@ -10,9 +10,26 @@
   	<div class="top-bar-section">
           <ul class="right">
       <li class="divider"></li>
+          <% if user_signed_in? %>
+                  <li><a href="#">Alerts</a></li>
+                    <li class="divider"></li>
                     <li class="has-dropdown">
-                      <a href="#">Main Item 1</a>
+                      <a href="#"><%=current_user.email%></a>
+                      <ul class="dropdown">
+                        <li> <%= link_to "Logout", destroy_user_session_path, :method => :delete %></li>
+                        <li> <%= link_to "New Post", new_post_path %></li>
+
+                      </ul>
                     </li>
+
+                    <%else%>
+
+                    <li class="divider"></li>
+                    <li class="name"><%= link_to "Sign up", new_user_registration_path %></li>
+                    <li class="divider"></li>
+                    <li class="name"><%= link_to "Login", new_user_session_path %></li>
+
+                    <%end%>
                   </li>
                   </ul>
     	<ul>
