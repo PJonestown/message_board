@@ -1,32 +1,5 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Listing Posts</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>Title</th>
-      <th>Body</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @posts.each do |post| %>
-      <tr>
-        <td><%= post.title %></td>
-        <td><%= post.body %></td>
-        <td><%= link_to 'Show', post %></td>
-        <td><%= link_to 'Edit', edit_post_path(post) %></td>
-        <td><%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Post', new_post_path %>
 
 
        
@@ -64,7 +37,7 @@
             <%@posts.each do |post| %>
               <div class="large-2 columns small-3"><img src="http://placehold.it/80x80&text=[img]"/></div>
               <div class="large-10 columns">
-                <p><strong><%=post.title%>:</strong> <%= simple_format post.body%></p>
+                <p><strong><%= link_to post.title, post %></strong> <%= simple_format post.body%></p>
                 <ul class="inline-list">
                   <li><a href="">Reply</a></li>
                   <li><a href="">Share</a></li>
@@ -78,6 +51,9 @@
                 <div class="large-10 columns"><p>Bacon ipsum dolor sit amet nulla ham qui sint exercitation eiusmod commodo, chuck duis velit. Aute in reprehenderit</p></div>
               </div>
             </div>
+
+            <%= link_to 'Edit', edit_post_path(post) %>
+            <%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %>
 
 
           <hr/>
